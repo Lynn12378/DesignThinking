@@ -6,7 +6,7 @@
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>//請先安裝PubSubClient程式庫
 
-char* ssid = "YingWifi"; # ssid
+char* ssid = "YingWifi";
 char* password = "99867741";
 
 // ------ 以下修改成你MQTT設定 ------
@@ -16,7 +16,7 @@ char* MQTTUser = "";//不須帳密
 char* MQTTPassword = "";//不須帳密
 char* MQTTPubTopic1  = "team3/class406/pic";//推播主題1:即時影像
 long MQTTLastPublishTime;//此變數用來記錄推播時間
-long MQTTPublishInterval = 500;//每1秒推撥2次影像
+long MQTTPublishInterval = 1500;//每1秒推撥2次影像
 WiFiClient WifiClient;
 PubSubClient MQTTClient(WifiClient);
 
@@ -56,16 +56,16 @@ void setup() {
     sensor_t * s = esp_camera_sensor_get();
     int res = 0;
     res = s->set_brightness(s, 1); //亮度:(-2~2)
-    res = s->set_contrast(s, 1); //對比度:(-2~2)
-    res = s->set_saturation(s, 1); //色彩飽和度:(-2~2)
+    res = s->set_contrast(s, 2); //對比度:(-2~2)
+    res = s->set_saturation(s, 2); //色彩飽和度:(-2~2)
     //res = s->set_special_effect(s, 0);//特殊效果:(0~6)
-    //res = s->set_whitebal(s, 1);//啟動白平衡:(0或1)
+    // res = s->set_whitebal(s, 1);//啟動白平衡:(0或1)
     //res = s->set_awb_gain(s, 1);//自動白平衡增益:(0或1)
     //res = s->set_wb_mode(s, 0);//白平衡模式:(0~4)
-    //res = set_exposure_ctrl(s, 1);;//曝光控制:(0或1)
-    //res = set_aec2(s, 0);//自動曝光校正:(0或1)
-    //res = set_ae_level(s, 0);//自動曝光校正程度:(-2~2)
-    //res = set_aec_value(s, 300);//自動曝光校正值：(0~1200)
+    // res = set_exposure_ctrl(s, 1);//曝光控制:(0或1)
+    // res = set_aec2(s, 1);//自動曝光校正:(0或1)
+    // res = set_ae_level(s, 0);//自動曝光校正程度:(-2~2)
+    // res = set_aec_value(s, 300);//自動曝光校正值：(0~1200)
     //res = set_gain_ctrl(s, 1);//增益控制:(0或1)
     //res = set_agc_gain(s, 0);//自動增益:(0~30)
     //res = set_gainceiling(s, (gainceiling_t)0); //增益上限:(0~6)
